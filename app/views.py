@@ -24,6 +24,7 @@ class Urls(db.Model):
         self.long = long
         self.short = short
 
+# creating shorten url
 def shorten_url():
     letters = string.ascii_lowercase + string.ascii_uppercase + string.digits
     while True:
@@ -37,12 +38,16 @@ def shorten_url():
 @app.route('/', methods=['POST', 'GET'])
 def home():
     if request.method == "POST":
+        # receiving the long url
         url_received = request.form["name"]
+        # check if exists
         found_url = Urls.query.filter_by(long=url_received).first()
 
         if found_url:
+            # return short url if found
             return redirect(url_for("display_short_url", url=found_url.short))
         else:
+            # create short url if not found
             short_url = shorten_url()
             print(short_url)
             new_url = Urls(url_received, short_url)
@@ -52,6 +57,7 @@ def home():
     else:
         return render_template('url_page.html')
 
+# redirection service
 @app.route('/<short_url>')
 def redirection(short_url):
     long_url = Urls.query.filter_by(short=short_url).first()
@@ -64,7 +70,8 @@ def redirection(short_url):
 def display_short_url(url):
     return render_template('shorturl.html', short_url_display=url)
 
+# displays the whole datastore mappings
 @app.route('/data')
-def display():
+def display_all_urls():
     return render_template('datastore.html', vals=Urls.query.all())
 
