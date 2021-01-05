@@ -8,10 +8,10 @@ This is a Flask-SQLAlchemy url-shortener dockerized app. It takes URL and shorte
 
 ## App Characteristics
 1) Shortening Service - Takes long url as input and generates a random short url, also stores the mapping of short and long url in the datastore.
-![alt text]()
+![alt text](https://github.com/SakshamSaxena97/url_shortener/blob/master/screenshots/shortener.png)
 
 2) Redirection Service - When a random short url is generated, the user can click on the link to redirect to the actual long url.
-![alt text]()
+![alt text](https://github.com/SakshamSaxena97/url_shortener/blob/master/screenshots/redirection.png)
 
 3) Datastore - SQLAlchemy is used as the database which has the mapping of the short and long url. This mapping can be visited on http://localhost/data/
-![alt text]()
+![alt text](https://github.com/SakshamSaxena97/url_shortener/blob/master/screenshots/datastore.png)
