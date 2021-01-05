@@ -2,3 +2,4 @@ __pycache__/
 urlShortener/
 app/urls.db
 .dockerignore
+.DS_Store
